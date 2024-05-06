@@ -1,0 +1,32 @@
+defaults:
+  - _self_
+  - hp: "logits"
+
+hp:
+  seed: 45
+  game_name: 'IPD'
+  game_length: 10
+  reward_discount: 0.96
+  batch_size: 32
+  differentiable_opponent:
+    method: 'loaded-dice'
+    n_step: 2
+    discount: 0.9
+    exclude_after_step: 1e9
+    differentiable_current_reward: False
+  eval_every: 100
+  op_softmax_temp: 1.0
+  just_self_play: True
+  epsilon_greedy: 0.0
+  save_dir:
+    ./experiments
+  save_every: 1000
+
+wandb:
+  state: disabled
+  tags:
+    - test
+  wandb_dir: /scratch/jduque/wandb
+jax:
+  jax_disable_jit: False
+  jax_debug_nans: False

@@ -1,0 +1,28 @@
+actor:
+  model: 'logits'
+  train:
+    separate_optimizers: 'disabled'
+    lr_loss_actor: 1e-4
+    lr_loss_opponent: 1e-4
+    entropy_beta: 0.0
+    advantage: 'TD0'
+    clip_grad:
+      mode: 'disabled'
+qvalue:
+  train:
+    lr_loss_qvalue: 1e-2
+    target_ema_gamma: 0.99
+  mode: 'argmax'
+  replay_buffer:
+    mode: 'enabled'
+    capacity: 1000
+optimizer: 'adam'
+reset:
+  mode: 'disabled'
+  every: 5000
+agent_replay_buffer:
+  mode: 'enabled'
+  cur_agent_frac: 0.0
+  update_freq: 10
+  capacity: 1000
+opponent_differentiation_weight: 1.0

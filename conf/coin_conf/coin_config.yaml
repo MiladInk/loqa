@@ -1,0 +1,31 @@
+defaults:
+  - _self_
+  - hp: "test"
+
+hp:
+  seed: 45
+  reward_discount: 0.96
+  batch_size: 128
+  agent_0: 'loqa'
+  agent_1: 'loqa'
+  eval_every: 100
+  op_softmax_temp: 1.0
+  game:
+    height: 3
+    width: 3
+    gnumactions: 4
+    game_length: 50
+  save_dir:
+    ./experiments
+  save_every: 100
+
+wandb:
+  state: disabled
+  tags:
+    - test
+  wandb_dir: /scratch/jduque/wandb
+jax:
+  jax_disable_jit: False
+  jax_debug_nans: False
+
+

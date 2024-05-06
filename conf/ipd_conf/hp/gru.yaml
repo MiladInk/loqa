@@ -1,0 +1,31 @@
+seed: 46
+batch_size: 3
+game_length: 7
+actor:
+  model: 'gru'
+  train:
+    separate_optimizers: 'disabled'
+    lr_loss_actor: 1e-4
+    entropy_beta: 0.2
+    advantage: 'TD0'
+    clip_grad:
+      mode: 'norm'
+      max_norm: 10.0
+qvalue:
+  replay_buffer:
+    mode: 'disabled'
+    capacity: 1000
+  train:
+    lr_loss_qvalue: 1e-2
+    target_ema_gamma: 0.99
+  mode: 'mean'
+optimizer: 'adam'
+reset:
+  mode: 'disabled'
+  every: 2000
+agent_replay_buffer:
+  mode: 'enabled'
+  capacity: 10000
+  update_freq: 10
+  cur_agent_frac: 0.0
+opponent_differentiation_weight: 1.0

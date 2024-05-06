@@ -1,0 +1,22 @@
+seed: 46
+batch_size: 256
+actor:
+  model: 'mlp'
+  activation: 'relu'
+  train:
+    separate_optimizers: 'disabled'
+    lr_loss_actor: 1e-4
+    entropy_beta: 0.0
+    advantage: 'TD0'
+qvalue:
+  replay_buffer:
+    mode: 'disabled'
+    capacity: 1000
+  train:
+    lr_loss_qvalue: 1e-2
+  mode: 'argmax'
+optimizer: 'adam'
+reset:
+  mode: 'disabled'
+  every: 2000
+

@@ -1,0 +1,43 @@
+defaults:
+  - _self_
+
+actor:
+  inf_weight: 0.5
+  hidden_size: 64
+  layers_before_gru: 1
+  train:
+    lr_loss_actor: 3e-3
+    optimizer: 'adam'
+    advantage: 'TD0'
+    entropy_beta: 0.05
+    clip_grad:
+      mode: 'norm'
+      max_norm: 1.0
+    separate: 'disabled'
+qvalue:
+  hidden_size: 64
+  layers_before_gru: 2
+  train:
+    optimizer: 'adam'
+    lr_loss_qvalue: 1e-2
+    target_ema_gamma: 0.99
+  replay_buffer:
+    mode: 'disabled'
+    capacity: 1000
+  mode: 'mean'
+differentiable_opponent:
+  method: 'loaded-dice'
+  discount: 0.9
+  exclude_after_step: 1e9
+  differentiable_current_reward: False
+  stop_grad_normalizing_constant: 'disabled'
+reset:
+  mode: 'disabled'
+agent_replay_buffer:
+  mode: 'enabled'
+  capacity: 1
+  update_freq: 1
+  cur_agent_frac: 0.
+opponent_differentiation_weight: 1.0
+batch_size: 8192
+just_self_play: True

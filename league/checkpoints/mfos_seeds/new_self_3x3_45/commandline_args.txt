@@ -1,0 +1,5 @@
+{
+  "exp_name": "new_self_3x3_45",
+  "grid_size": 3,
+  "seed": 45
+}

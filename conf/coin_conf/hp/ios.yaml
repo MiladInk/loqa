@@ -1,0 +1,41 @@
+wandb_dir: /scratch/jduque/wandb
+actor:
+  hidden_size: 64
+  layers_before_gru: 2
+  inf_weight: 0.4
+  train:
+    lr_loss_actor: 1e-4
+    optimizer: 'adam'
+    advantage: 'TD0'
+    entropy_beta: 0.1
+    clip_grad:
+      mode: 'norm'
+      max_norm: 1.0
+    separate: 'disabled'
+qvalue:
+  hidden_size: 64
+  layers_before_gru: 2
+  train:
+    optimizer: 'adam'
+    lr_loss_qvalue: 1e-3
+    target_ema_gamma: 0.99
+  replay_buffer:
+    mode: 'disabled'
+    capacity: 1000
+  mode: 'mean'
+differentiable_opponent:
+  method: 'loaded-ios'
+  discount: 1.0
+  exclude_after_step: 1e9
+  differentiable_current_reward: True
+reset:
+  mode: 'enabled'
+  every: 3
+agent_replay_buffer:
+  mode: 'enabled'
+  capacity: 7
+  update_freq: 2
+  cur_agent_frac: 0.5
+opponent_differentiation_weight: 1.0
+batch_size: 128
+just_self_play: True

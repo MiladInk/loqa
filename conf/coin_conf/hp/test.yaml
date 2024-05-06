@@ -1,0 +1,32 @@
+actor:
+  train:
+    optimizer: 'adam'
+    lr_loss_actor: 1e-4
+    advantage: 'TD0'
+    entropy_beta: 0.15
+    clip_grad:
+      mode: 'norm'
+      max_norm: 1.0
+    inf_weight: 0.7
+qvalue:
+  train:
+    optimizer: 'adam'
+    lr_loss_qvalue: 1e-3
+    target_ema_gamma: 0.99
+  replay_buffer:
+    mode: 'disabled'
+    capacity: 1000
+differentiable_opponent:
+  method: 'loaded-dice'
+  discount: 1.0
+  exclude_after_step: 15000
+reset:
+  mode: 'enabled'
+  every: 3
+agent_replay_buffer:
+  mode: 'enabled'
+  capacity: 7
+  update_freq: 2
+  cur_agent_frac: 0.5
+opponent_differentiation_weight: 1.0
+batch_size: 128
